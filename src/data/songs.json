@@ -28,5 +28,11 @@
         "thumbnail": "icon.png",
         "titulo": "Song2",
         "artista": "Artist2"
+    },
+    {
+        "id": 6,
+        "thumbnail": "icon.png",
+        "titulo": "Song3",
+        "artista": "Artist3"
     }
 ]
