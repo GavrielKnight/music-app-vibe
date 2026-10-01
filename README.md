@@ -54,3 +54,19 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Prompt utilizado
+
+En la pantalla de inicio agrega una funcionalidad que permita crear una playlist, asignarle un nombre, agregar canciones existentes en la app, visualizar las playlists creadas, mostrar las canciones que contienen. debe utilizar react native paper.
+
+## Plan propuesto por el agente
+
+Plan: Playlists en Inicio
+Agregar creación y consulta de playlists desde Inicio usando React Native Paper. Las playlists conservarán su estado mientras la app esté abierta, sin almacenamiento local. Para consultar las canciones y añadir más, propongo que cada playlist abra una pantalla de detalle.
+
+Pasos
+
+Crear un contexto de playlists fuera de app para mantener el estado al navegar. Guardar el nombre y los IDs de las canciones, usando songs.json como catálogo único.
+Montar el provider dentro de PaperProvider en _layout.js, junto al Stack.
+Completar la sección “Mis Playlists” en index.js: mostrar las playlists y abrir un diálogo Paper para asignar un nombre y seleccionar canciones. Permitir crear una playlist vacía para agregarle canciones después.
+Añadir la ruta src/app/playlists/[id].js para mostrar las cancio
