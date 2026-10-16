@@ -16,6 +16,13 @@ export default StyleSheet.create({
         justifyContent: "space-evenly",
     },
 
+    appLogo: {
+        width: 36,
+        height: 36,
+        marginLeft: 12,
+        marginRight: 8,
+    },
+
     horizontalBox: {
         flexDirection: "row",
         alignItems: "center",

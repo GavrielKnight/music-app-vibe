@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 import { Appbar } from "react-native-paper";
@@ -9,6 +10,12 @@ export default function Layout({ children }) {
         <View style={{ flex: 1 }}>
             {/*Barra superior*/}
             <Appbar.Header style={styles.appBar}>
+                <Image
+                    source={require("../../assets/images/app-logo.png")}
+                    style={styles.appLogo}
+                    contentFit="contain"
+                    accessibilityLabel="Logo de Music App"
+                />
                 <Appbar.Content title="Music App"/>
             </Appbar.Header>
 
