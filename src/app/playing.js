@@ -1,5 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as Haptics from "expo-haptics";
 import { useLocalSearchParams } from "expo-router";
+import { useState } from "react";
 import { Image, Text, View } from "react-native";
 import { IconButton } from "react-native-paper";
 
@@ -10,12 +12,24 @@ import songs from "../data/songs.json";
 import styles from "./styles.js";
 
 export default function Playing() {
+    const [isLiked, setIsLiked] = useState(false);
 
     const { id } = useLocalSearchParams();
 
     const song = songs.find(
         (song) => song.id.toString() === id
     );
+
+    const toggleLike = () => {
+        setIsLiked((currentIsLiked) => !currentIsLiked);
+        Haptics.impactAsync(
+            isLiked
+                ? Haptics.ImpactFeedbackStyle.Light
+                : Haptics.ImpactFeedbackStyle.Heavy
+        ).catch((error) => {
+            console.error("Unable to trigger like haptic feedback:", error);
+        });
+    };
 
     return (
         <Layout>
@@ -34,8 +48,14 @@ export default function Playing() {
                         <Text style={styles.title2}>By {song.artista}</Text>
                     </View>
                     <IconButton
+                        onPress={toggleLike}
+                        accessibilityLabel={isLiked ? "Quitar me gusta" : "Me gusta"}
                         icon={() => (
-                            <MaterialCommunityIcons name="heart-outline" size={35}/>
+                            <MaterialCommunityIcons
+                                name={isLiked ? "heart" : "heart-outline"}
+                                color="red"
+                                size={35}
+                            />
                         )}
                     />
                 </View>
